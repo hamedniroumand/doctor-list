@@ -4,15 +4,15 @@
     <div class="section">
       <div class="flex-row">
         <label class="label" for="filter">Find profile:</label>
-        <input class="input">
+        <input v-model="search" class="input">
       </div>
-      <div class="buttons">
+      <div v-if="filteredProfiles.length" class="buttons">
         <button @click="sortAsc">▲</button>
         <button @click="sortDesc">▼</button>
       </div>
 
       <ProfileCard
-        v-for="(profile, index) in profiles"
+        v-for="(profile, index) in filteredProfiles"
         :key="index"
         :profile="profile"
         :comment.sync="comments[profile.id]"
@@ -57,6 +57,7 @@ export default {
 
   data() {
     return {
+      search: '',
       profiles: [
         {
           id: 1,
@@ -82,6 +83,15 @@ export default {
       ],
       comments: {},
     };
+  },
+
+  computed: {
+    filteredProfiles() {
+      if (this.search) {
+        return this.profiles.filter((profile) => profile.name.toLocaleLowerCase().includes(this.search.toLocaleLowerCase()));
+      }
+      return this.profiles;
+    }
   },
 
   methods: {
