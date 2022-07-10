@@ -1,0 +1,33 @@
+body {
+    margin: 0;
+}
+input:focus-within {
+    outline: none;
+}
+.w-full {
+    width: 100%;
+}
+.h-full {
+    height: 100%;
+}
+.p-0 {
+    padding: 0;
+}
+.flex {
+    display: flex;
+}
+.flex {
+    display: flex;
+}
+.items-center {
+    align-items: center;
+}
+.justify-between {
+    justify-content: space-between;
+}
+.gap-1 {
+    gap: .25rem;
+}
+.text-center {
+    text-align: center;
+}
