@@ -26,34 +26,24 @@
       </div>
     </div>
 
-    <div class="section">
-      <p class="header">Add new profile:</p>
-      <div class="flex-row">
-        <label class="label">Name:</label>
-        <input class="input">
-      </div>
-      <div class="flex-row">
-        <label class="label" for="filter">Email:</label>
-        <input class="input">
-      </div>
-      <div class="flex-row">
-        <label class="label">Specialisation:</label>
-        <input class="input">
-      </div>
-      <button>Add</button>
-    </div>
+    <NewProfileCard
+      ref="NewProfileCard"
+      @save-profile="createNewProfile"
+    />
   </div>
 </template>
 
 <script>
 import ProfileCard from "./components/ProfileCard";
+import NewProfileCard from "./components/profile-form/NewProfileCard.vue";
 
 export default {
   name: "App",
 
   components: {
-    ProfileCard
-  },
+    ProfileCard,
+    NewProfileCard,
+},
 
   data() {
     return {
@@ -105,6 +95,14 @@ export default {
       this.profiles.sort(function(a, b) {
         return b.likes - a.likes;
       });
+    },
+
+    createNewProfile(profile) {
+      this.profiles.push({
+        id: Math.floor(Math.random() * 9999999),
+        ...profile,
+      });
+      this.$refs.NewProfileCard.resetForm();
     }
   }
 };
