@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    <p>Profiles List</p>
     <ProfileList />
     <NewProfileCard ref="NewProfileCard" @save-profile="createNewProfile" />
   </div>

@@ -1,5 +1,5 @@
 <template>
-  <ProfileForm v-model="form" @submit="saveProfile">
+  <ProfileForm v-model="form" class="new-profile" @submit="saveProfile">
     <template #title>
       <p class="header">Add new profile:</p>
     </template>
@@ -36,3 +36,11 @@ export default {
   },
 };
 </script>
+
+
+<style scoped>
+.new-profile {
+  position: sticky;
+  top: 1rem;
+}
+</style>

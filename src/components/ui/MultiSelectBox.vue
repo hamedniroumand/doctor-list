@@ -189,7 +189,7 @@ fade-leave {
   overflow-y: auto;
   margin: 0;
   padding: 0;
-  max-height: 160px;
+  max-height: 140px;
   height: 100%;
 }
 .select_option {
