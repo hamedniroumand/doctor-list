@@ -32,6 +32,7 @@
 <script>
 import MultiSelectBox from "../ui/MultiSelectBox.vue";
 import FormError from "../ui/FormError.vue";
+import SpecializationService from "../../services/SpecializationService";
 
 export default {
   components: { MultiSelectBox, FormError },
@@ -49,13 +50,7 @@ export default {
     },
     specializationList: {
       type: Array,
-      default:() => ([
-        { id: 1, title: 'Surgeon' },
-        { id: 2, title: 'Radiologist' },
-        { id: 3, title: 'Cardiologist' },
-        { id: 4, title: 'Psychiatrist' },
-        { id: 5, title: 'Dermatologist' },
-      ]),
+      default:() => SpecializationService.all(),
     },
     errors: {
       type: Object,
