@@ -36,6 +36,7 @@
 <script>
 import ProfileCard from "./components/ProfileCard";
 import NewProfileCard from "./components/profile-form/NewProfileCard.vue";
+import ProfileService from "./core/services/ProfileService";
 
 export default {
   name: "App",
@@ -48,29 +49,7 @@ export default {
   data() {
     return {
       search: '',
-      profiles: [
-        {
-          id: 1,
-          name: "Wojciech",
-          email: "wojciech@poz.pl",
-          description: "Anaesthesiologist",
-          likes: 34
-        },
-        {
-          id: 2,
-          name: "Maria",
-          email: "maria@poz.pl",
-          description: "Radiologist",
-          likes: 28
-        },
-        {
-          id: 3,
-          name: "Anna",
-          email: "anna@poz.pl",
-          description: "Surgeon",
-          likes: 53
-        }
-      ],
+      profiles: ProfileService.all(),
       comments: {},
     };
   },
@@ -98,10 +77,7 @@ export default {
     },
 
     createNewProfile(profile) {
-      this.profiles.push({
-        id: Math.floor(Math.random() * 9999999),
-        ...profile,
-      });
+      ProfileService.create(profile);
       this.$refs.NewProfileCard.resetForm();
     }
   }
