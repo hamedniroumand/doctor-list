@@ -16,7 +16,7 @@ const EMPTY_FORM_TEMPLATE = {
   name: "",
   email: "",
   description: "",
-  specializationIds: [],
+  specializations: [],
 };
 
 export default {
