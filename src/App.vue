@@ -15,6 +15,7 @@
         v-for="(profile, index) in profiles"
         :key="index"
         :profile="profile"
+        :comment.sync="comments[profile.id]"
         class="profile"
       />
 
@@ -78,7 +79,8 @@ export default {
           description: "Surgeon",
           likes: 53
         }
-      ]
+      ],
+      comments: {},
     };
   },
 

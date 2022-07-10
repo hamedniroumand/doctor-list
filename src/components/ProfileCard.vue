@@ -17,7 +17,12 @@
       </div>
     </div>
     <div class="comment">
-      <input class="comment-input" placeholder="Write your comment...">
+      <input
+        :value="comment"
+        class="comment-input"
+        placeholder="Write your comment..."
+        @input="$emit('update:comment', $event.target.value)"
+      />
     </div>
   </div>
 </template>
@@ -36,7 +41,12 @@ export default {
     profile: {
       type: Object,
       required: true
-    }
+    },
+    comment: {
+      type: String,
+      required: true,
+      default: "",
+    },
   }
 };
 </script>
