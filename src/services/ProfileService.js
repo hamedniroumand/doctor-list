@@ -1,11 +1,7 @@
 import Vue from "vue";
+import { SORT_STATES, LIKE_STATUSES } from "../core/constants";
 import { ProfileModel } from "../models/ProfileModel";
 import SpecializationService from "./SpecializationService";
-
-const LIKE_STATUSES = {
-  IS_LIKED: true,
-  IS_DISLIKED: false,
-};
 
 class ProfileService {
   constructor() {
@@ -99,16 +95,16 @@ class ProfileService {
 
   sort(sortAs) {
     if (
-      (this._currentSortState === "asc" && sortAs === "asc") ||
-      (this._currentSortState === "desc" && sortAs === "desc")
+      (this._currentSortState === SORT_STATES.ASC && sortAs === SORT_STATES.ASC) ||
+      (this._currentSortState === SORT_STATES.DESC && sortAs === SORT_STATES.DESC)
     ) {
       _restoreData.bind(this)();
       this._currentSortState = null;
       return;
     }
-    if (sortAs === "asc") {
+    if (sortAs === SORT_STATES.ASC) {
       _sortAsc.bind(this)();
-    } else if (sortAs === "desc") {
+    } else if (sortAs === SORT_STATES.DESC) {
       _sortDesc.bind(this)();
     }
   }
@@ -123,14 +119,14 @@ function _sortAsc() {
   this.profiles.sort(function (a, b) {
     return a.likes - b.likes;
   });
-  this._currentSortState = "asc";
+  this._currentSortState = SORT_STATES.ASC;
 }
 
 function _sortDesc() {
   this.profiles.sort(function (a, b) {
     return b.likes - a.likes;
   });
-  this._currentSortState = "desc";
+  this._currentSortState = SORT_STATES.DESC;
 }
 
 export default new ProfileService();
