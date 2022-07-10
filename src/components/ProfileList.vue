@@ -6,8 +6,8 @@
       <input v-model="search" class="input" />
     </div>
     <div v-if="filteredProfiles.length" class="buttons">
-      <button @click="sortAsc">▲</button>
-      <button @click="sortDesc">▼</button>
+      <button :class="{ 'active': checkSortState('asc') }" @click="sortAsc">▲</button>
+      <button :class="{ 'active': checkSortState('desc') }" @click="sortDesc">▼</button>
     </div>
 
     <ProfileCard
@@ -30,8 +30,10 @@
 </template>
 
 <script>
+import { SORT_STATES } from '../core/constants';
 import ProfileService from "../services/ProfileService";
 import ProfileCard from "./ProfileCard.vue";
+
 export default {
   components: { ProfileCard },
 
@@ -40,6 +42,7 @@ export default {
       search: "",
       profiles: ProfileService.all(),
       comments: {},
+      sortState: null,
     };
   },
 
@@ -57,11 +60,16 @@ export default {
   },
 
   methods: {
+    checkSortState(state) {
+      return state === this.sortState;
+    },
     sortAsc() {
-      ProfileService.sort('asc');
+      ProfileService.sort(SORT_STATES.ASC);
+      this.sortState = ProfileService._currentSortState;
     },
     sortDesc() {
-      ProfileService.sort('desc');
+      ProfileService.sort(SORT_STATES.DESC);
+      this.sortState = ProfileService._currentSortState;
     },
   },
 };

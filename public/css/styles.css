@@ -76,6 +76,11 @@ button {
   font-size: 0.75em;
   font-weight: 600;
   text-shadow: 0 1px 0 rgba(black, 0.2);
+  transition: background .3s;
+}
+
+button.active {
+  background-color: #2a895e;
 }
 
 .content {
