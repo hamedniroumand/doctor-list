@@ -1,9 +1,9 @@
 export default class Validation {
-  constructor(form, ValidationForm) {
+  constructor(form, validationForm) {
     const _form = JSON.parse(JSON.stringify(form));
     const errors = {};
-    Object.keys(ValidationForm).forEach(function (field) {
-      for (const rule of ValidationForm[field]) {
+    Object.keys(validationForm).forEach(function (field) {
+      for (const rule of validationForm[field]) {
         if (typeof rule !== "function")
           throw Error("The rule function is not valid.");
         const executedRule = rule(_form[field]);
@@ -22,14 +22,20 @@ export default class Validation {
 }
 
 const generateErrorMessage = (rule, payload) => {
-  if (rule.name === "required") return "this field is required.";
-  if (rule.name === "email") return "this field should be type of email.";
-  if (rule.name === "english")
-    return "this field should have english chars only.";
-  if (rule.name === "min")
-    return `this field should contains at least ${payload} characters.`;
-  if (rule.name === "array") return "this field should be an array.";
-  return "this field is invalid.";
+  switch (rule.name) {
+    case "required":
+      return "this field is required.";
+    case "email":
+      return "this field should be type of email.";
+    case "english":
+      return "this field should have english chars only.";
+    case "min":
+      return `this field should contains at least ${payload} characters.`;
+    case "array":
+      return "this field should be an array.";
+    default:
+      return "this field is invalid.";
+  }
 };
 
 const getResult = (errors) => {
