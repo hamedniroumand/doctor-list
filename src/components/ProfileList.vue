@@ -10,13 +10,15 @@
       <button :class="{ 'active': checkSortState('desc') }" @click="sortDesc">▼</button>
     </div>
 
-    <ProfileCard
-      v-for="(profile, index) in filteredProfiles"
-      :key="index"
-      :profile="profile"
-      :comment.sync="comments[profile.id]"
-      class="profile"
-    />
+    <transition-group name="slide-up">
+      <ProfileCard
+        v-for="(profile, index) in filteredProfiles"
+        :key="index"
+        :profile="profile"
+        :comment.sync="comments[profile.id]"
+        class="profile"
+      />
+    </transition-group>
 
     <div class="icons-note">
       Icons made by
@@ -74,3 +76,17 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.slide-up-enter, .slide-up-leave-to {
+  transform: translateY(30px);
+  opacity: 0;
+}
+.slide-up-enter-to, slide-up-leave {
+  transform: translateX(0);
+  opacity: 1;
+}
+.slide-up-enter-active, .slide-up-leave-active {
+  transition: all .3s ease;
+}
+</style>
