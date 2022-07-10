@@ -10,7 +10,7 @@
       <button :class="{ 'active': checkSortState('desc') }" @click="sortDesc">▼</button>
     </div>
 
-    <transition-group name="slide-up">
+    <transition-group name="slide-up" appear mode="out-in">
       <ProfileCard
         v-for="(profile, index) in filteredProfiles"
         :key="index"
@@ -79,7 +79,7 @@ export default {
 
 <style scoped>
 .slide-up-enter, .slide-up-leave-to {
-  transform: translateY(30px);
+  transform: translateX(30px);
   opacity: 0;
 }
 .slide-up-enter-to, slide-up-leave {
@@ -87,6 +87,6 @@ export default {
   opacity: 1;
 }
 .slide-up-enter-active, .slide-up-leave-active {
-  transition: all .3s ease;
+  transition: all .45s ease;
 }
 </style>
