@@ -5,7 +5,7 @@ export default {
       default: false,
     },
     size: {
-      type: [Number, Boolean],
+      type: [Number, String],
       default: 24,
     },
   },
