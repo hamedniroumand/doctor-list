@@ -15,14 +15,21 @@
     </div>
     <div class="flex-row">
       <label class="label">Specialisation:</label>
-      <input v-model="form.specializations" class="input" />
+      <MultiSelectBox
+        v-model="form.specializations"
+        :options="specializationList"
+      />
     </div>
     <slot name="footer" />
   </form>
 </template>
 
 <script>
+import MultiSelectBox from "../ui/MultiSelectBox.vue";
+
 export default {
+  components: { MultiSelectBox },
+
   props: {
     value: {
       type: Object,
@@ -34,6 +41,16 @@ export default {
         specializations: "",
       }),
     },
+    specializationList: {
+      type: Array,
+      default:() => ([
+        { id: 1, title: 'Surgeon' },
+        { id: 2, title: 'Radiologist' },
+        { id: 3, title: 'Cardiologist' },
+        { id: 4, title: 'Psychiatrist' },
+        { id: 5, title: 'Dermatologist' },
+      ]),
+    }
   },
 
   computed: {
