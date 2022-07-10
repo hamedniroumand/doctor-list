@@ -17,11 +17,11 @@
             <span class="likes-value">{{ profile.likes }}</span>
           </div>
           <div class="flex items-center gap-2">
-            <button class="like-btn">
-              <DislikeIcon size="20" />
+            <button class="like-btn" @click="toggleLike(false)">
+              <DislikeIcon size="20" :fill="profile.isDisliked" />
             </button>
-            <button class="like-btn">
-              <LikeIcon size="20" />
+            <button class="like-btn" @click="toggleLike(true)">
+              <LikeIcon size="20" :fill="profile.isLiked" />
             </button>
           </div>
         </div>
@@ -42,6 +42,7 @@
 import DoctorIcon from "./icons/DoctorIcon";
 import LikeIcon from "./icons/LikeIcon.vue";
 import DislikeIcon from "./icons/DislikeIcon.vue";
+import ProfileService from "../services/ProfileService";
 
 export default {
   name: "ProfileCard",
@@ -68,7 +69,13 @@ export default {
     selectedSpecializationsName() {
       return this.profile.specializations.map((specialization) => specialization.title)
     }
-  }
+  },
+
+  methods: {
+    toggleLike(isLiked) {
+      ProfileService.toggleLike(this.profile.id, isLiked);
+    },
+  },
 };
 </script>
 

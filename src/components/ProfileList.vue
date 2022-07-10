@@ -58,15 +58,10 @@ export default {
 
   methods: {
     sortAsc() {
-      this.profiles.sort(function (a, b) {
-        return a.likes - b.likes;
-      });
+      ProfileService.sort('asc');
     },
-
     sortDesc() {
-      this.profiles.sort(function (a, b) {
-        return b.likes - a.likes;
-      });
+      ProfileService.sort('desc');
     },
   },
 };
