@@ -65,7 +65,7 @@ export default {
       }
     },
     resetForm() {
-      this.form = EMPTY_FORM_TEMPLATE;
+      this.form = { ...EMPTY_FORM_TEMPLATE };
     },
   },
 };
