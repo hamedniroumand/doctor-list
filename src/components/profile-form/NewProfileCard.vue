@@ -1,6 +1,6 @@
 <template>
   <ProfileForm v-model="form" class="new-profile" @submit="saveProfile">
-    <template #title>
+    <template #header>
       <p class="header">Add new profile:</p>
     </template>
     <template #footer>

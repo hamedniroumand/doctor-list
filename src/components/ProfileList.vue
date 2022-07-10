@@ -1,5 +1,6 @@
 <template>
   <div class="section">
+    <p class="header">Profiles List:</p>
     <div class="flex-row">
       <label class="label" for="filter">Find profile:</label>
       <input v-model="search" class="input" />
