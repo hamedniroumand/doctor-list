@@ -37,7 +37,6 @@ export default {
 
   methods: {
     validateInput(inputName) {
-      console.log("validateInput", inputName);
       const { $errors } = this.validateForm(inputName);
       this.errors[inputName] = $errors[inputName];
     },
@@ -54,7 +53,13 @@ export default {
     saveProfile() {
       const { $isValid, $errors } = this.validateForm();
       if ($isValid) {
-        this.$emit("save-profile", this.form);
+        const { name, email,description, specializations } = this.form;
+        this.$emit("save-profile", {
+          name,
+          email,
+          description,
+          specializationIds: specializations,
+        });
       } else {
         this.errors = $errors;
       }

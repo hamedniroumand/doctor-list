@@ -32,7 +32,8 @@ class ProfileService {
     return this.profiles;
   }
 
-  create({ name, email, description, specializations }) {
+  create({ name, email, description, specializationIds }) {
+    const specializations = SpecializationService.findAll(specializationIds);
     const newProfile = new ProfileModel({
       name,
       email,

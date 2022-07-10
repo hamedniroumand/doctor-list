@@ -19,6 +19,10 @@ class SpecializationService {
   selectRandom() {
     return randomItems(this.specializations);
   }
+
+  findAll(arrayOfId) {
+    return this.all().filter(item => arrayOfId.includes(item.id));
+  }
 }
 
 export default new SpecializationService();
