@@ -25,11 +25,14 @@ input:focus-within {
 .justify-between {
   justify-content: space-between;
 }
-.gap-1 {
-  gap: 0.25rem;
+.gap-2 {
+  gap: .5rem;
 }
 .text-center {
   text-align: center;
+}
+.rotate-180 {
+  transform: rotate(180deg);
 }
 
 #app {
@@ -143,4 +146,13 @@ button {
 .icons-note {
   margin-top: 30px;
   font-size: 10px;
+}
+
+.like-btn {
+  background: transparent;
+    border: none;
+    cursor: pointer;
+  width: 1.2rem;
+  height: 1.2rem;
+  padding: 0;
 }

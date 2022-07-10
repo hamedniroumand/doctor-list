@@ -11,9 +11,19 @@
           <div class="description">{{profile.description}}</div>
           <div class="description">{{ selectedSpecializationsName | arrayToStringWithComma}}</div>
         </div>
-        <div class="likes">
-          <span class="likes-icon">💚</span>
-          <span class="likes-value">{{profile.likes}}</span>
+        <div class="flex items-center justify-between">
+          <div class="likes">
+            <span class="likes-icon">💚</span>
+            <span class="likes-value">{{ profile.likes }}</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <button class="like-btn">
+              <DislikeIcon size="20" />
+            </button>
+            <button class="like-btn">
+              <LikeIcon size="20" />
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -30,13 +40,17 @@
 
 <script>
 import DoctorIcon from "./icons/DoctorIcon";
+import LikeIcon from "./icons/LikeIcon.vue";
+import DislikeIcon from "./icons/DislikeIcon.vue";
 
 export default {
   name: "ProfileCard",
 
   components: {
-    DoctorIcon
-  },
+    DoctorIcon,
+    LikeIcon,
+    DislikeIcon
+},
 
   props: {
     profile: {
@@ -69,6 +83,7 @@ export default {
   color: rgb(82, 82, 82);
   background-color: #fff;
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  gap: 1rem;
 }
 
 .avatar {
@@ -81,16 +96,14 @@ export default {
 }
 
 .data {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  flex: 1;
 }
 
 .profile-content {
   display: flex;
   flex-direction: column;
   text-align: left;
-  margin-left: 15px;
+  margin-bottom: 0.5rem;
 }
 
 .email {
@@ -99,12 +112,6 @@ export default {
 
 .description {
   margin-top: 5px;
-}
-
-.likes {
-  color: rgb(76, 202, 114);
-  margin-top: 10px;
-  margin-left: 15px;
 }
 
 .likes-value {
