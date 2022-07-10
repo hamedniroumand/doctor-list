@@ -9,7 +9,7 @@
             <a :href="profile.email" class="email">{{profile.email}}</a>
           </div>
           <div class="description">{{profile.description}}</div>
-          <div class="description">{{profile.specializations}}</div>
+          <div class="description">{{ selectedSpecializationsName | arrayToStringWithComma}}</div>
         </div>
         <div class="likes">
           <span class="likes-icon">💚</span>
@@ -48,6 +48,12 @@ export default {
       required: true,
       default: "",
     },
+  },
+
+  computed: {
+    selectedSpecializationsName() {
+      return this.profile.specializations.map((specialization) => specialization.title)
+    }
   }
 };
 </script>
