@@ -9,6 +9,7 @@
             <a :href="profile.email" class="email">{{profile.email}}</a>
           </div>
           <div class="description">{{profile.description}}</div>
+          <div class="description">{{profile.specializations}}</div>
         </div>
         <div class="likes">
           <span class="likes-icon">💚</span>
