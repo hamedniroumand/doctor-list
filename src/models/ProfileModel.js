@@ -1,4 +1,4 @@
-import { randomNumber } from "../utils/numberUtils";
+import { randomNumber } from "../core/utils/numberUtils";
 
 export class ProfileModel {
     constructor({ name, email, description, specializations, likes = 0, }) {

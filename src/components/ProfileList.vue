@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import ProfileService from "../core/services/ProfileService";
+import ProfileService from "../services/ProfileService";
 import ProfileCard from "./ProfileCard.vue";
 export default {
   components: { ProfileCard },

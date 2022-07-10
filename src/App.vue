@@ -9,7 +9,7 @@
 <script>
 import NewProfileCard from "./components/profile-form/NewProfileCard.vue";
 import ProfileList from "./components/ProfileList.vue";
-import ProfileService from "./core/services/ProfileService";
+import ProfileService from "./services/ProfileService";
 
 export default {
   name: "App",
