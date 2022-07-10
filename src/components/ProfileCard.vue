@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import DoctorIcon from "./DoctorIcon";
+import DoctorIcon from "./icons/DoctorIcon";
 
 export default {
   name: "ProfileCard",
